@@ -1,6 +1,6 @@
 # samples-python
 
-Provides sample applications for using the FORCAM FORCE Bridge API with python. 
+Provides sample applications for using the FORCAM FORCE Bridge API with python.
 If you have any questions look at https://forcebridge.io/en/qa-portal/
 
 ### Useful Links
