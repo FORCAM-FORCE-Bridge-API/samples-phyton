@@ -35,7 +35,7 @@ A small PyCharm Python console application wich authenticates to a FORCAM FORCE 
 
 ![Image](Assets/AuthenticationGif.gif)
 
-Folder: "Authentication".
+File: "authentication.py".
 
 # Get all available workplaces
 
@@ -43,7 +43,7 @@ A small PyCharm Python console application wich authenticates to a FORCAM FORCE 
 
 ![Image](Assets/GetAvailableWorkplacesGif.gif)
 
-Folder: "GetAvailableWorkplaces".
+File: "getavailableworkplaces.py".
 
 # Get current operating state of a workplace
 
@@ -51,7 +51,7 @@ A small PyCharm Python console application wich authenticates to a FORCAM FORCE 
 
 ![Image](Assets/GetOperatingStateOfWorkplaceGif.gif)
 
-Folder: "GetOperatingStateOfWorkplace".
+File: "getoperatingstateofworkplace.py".
 
 # Get all operating states
 
@@ -59,4 +59,4 @@ A small PyCharm Python console application wich authenticates to a FORCAM FORCE 
 
 ![Image](Assets/GetOperatingStatesGif.gif)
 
-Folder: "GetOperatingStates".
+Folder: "getoperatingstates.py".
