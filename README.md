@@ -1,37 +1,62 @@
-## Welcome to GitHub Pages
+# samples-python
 
-You can use the [editor on GitHub](https://github.com/FORCAM-FORCE-Bridge-API/samples-phyton/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+Provides sample applications for using the FORCAM FORCE Bridge API with python.
+If you have any questions look at https://forcebridge.io/en/qa-portal/
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Useful Links
 
-### Markdown
+* Website: https://www.forcebridge.io/ | https://www.forcam.com/
+* Documentation: https://docs.forcebridge.io/
+* API Definition: https://app.swaggerhub.com/apis-docs/FORCAM/FORCEBridgeAPI/
+### Usage / Requirements
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+###### Access to a FORCAM FORCE Bridge API System
 
-```markdown
-Syntax highlighted code block
+_If you need access to a demo system please contact forcebridge@forcam.com._
 
-# Header 1
-## Header 2
-### Header 3
+Please add your URL, user and password of your Bridge API instance to the variables below (contained by all samples).
 
-- Bulleted
-- List
+```Python
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+String user; // YOUR USER (e.g. GitHub)
+String password; // YOUR PASSWORD (e.g. GitHub)
+String urlToken = ""; // YOUR URL (e.g. https://forcebridgehackathon.force.eco:24443/ffwebservices/)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+###### Framework & Tool
 
-### Jekyll Themes
+* PyCharm: Python IDE runtime (https://www.jetbrains.com/de-de/pycharm/download/)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/FORCAM-FORCE-Bridge-API/samples-phyton/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Description of the sample applications:
 
-### Support or Contact
+# Authentication
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+A small PyCharm Python console application wich authenticates to a FORCAM FORCE Bridge API and prints out the token information.
+
+![Image](Assets/AuthenticationGif.gif)
+
+Folder: "Authentication".
+
+# Get all available workplaces
+
+A small PyCharm Python console application wich authenticates to a FORCAM FORCE Bridge API, determine all available workplaces and prints them out.
+
+![Image](Assets/GetAvailableWorkplacesGif.gif)
+
+Folder: "GetAvailableWorkplaces".
+
+# Get current operating state of a workplace
+
+A small PyCharm Python console application wich authenticates to a FORCAM FORCE Bridge API, determine the operating state of an workplace and print it.
+
+![Image](Assets/GetOperatingStateOfWorkplaceGif.gif)
+
+Folder: "GetOperatingStateOfWorkplace".
+
+# Get all operating states
+
+A small PyCharm Python console application wich authenticates to a FORCAM FORCE Bridge API, determine all operating states and prints them out.
+
+![Image](Assets/GetOperatingStatesGif.gif)
+
+Folder: "GetOperatingStates".
