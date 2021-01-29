@@ -1,35 +1,63 @@
-name: CI
-
-on:
+name: Validate Python e2e
+on: 
   push:
-    branches: ["master"]
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
   pull_request:
-    branches: ["master"]
-  workflow_dispatch:
+    paths-ignore:
+      - '**.md'
+  schedule:
+    - cron: 30 3 * * *
 
 jobs:
-  tests:
-    name: "Python ${{ matrix.python-version }}"
-    runs-on: "ubuntu-latest"
-    env:
-      USING_COVERAGE: '3.6,3.8'
-
+  default-version:
+    name: Setup default version
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "pypy3"]
-
+        os: [macos-latest, windows-latest, ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
     steps:
-      - uses: "actions/checkout@v2"
-      - uses: "actions/setup-python@v2"
-        with:
-          python-version: "${{ matrix.python-version }}"
-      - name: "Install dependencies"
-        run: |
-          set -xe
-          python -VV
-          python -m site
-          python -m pip install --upgrade pip setuptools wheel
-          python -m pip install --upgrade coverage[toml] virtualenv tox tox-gh-actions          
+    - name: Checkout
+      uses: actions/checkout@v2
 
-      - name: "Run tox targets for ${{ matrix.python-version }}"
-        run: "python -m tox"
+    - name: setup default python 
+      uses: ./
+
+    - name: Validate version
+      run: python --version
+
+    - name: Run simple python code
+      run: python -c 'import math; print(math.factorial(5))'
+
+  setup-versions-from-manifest:
+    name: Setup ${{ matrix.python }} ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
+        python: [3.5.4, 3.6.7, 3.7.5, 3.8.1]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: setup-python ${{ matrix.python }}
+      uses: ./
+      with:
+        python-version: ${{ matrix.python }}
+
+    - name: Validate version
+      run: |
+        $pythonVersion = (python --version)
+        if ("Python ${{ matrix.python }}" -ne "$pythonVersion"){
+          Write-Host "The current version is $pythonVersion; expected version is ${{ matrix.python }}"
+          exit 1
+        }
+        $pythonVersion
+      shell: pwsh
+
+    - name: Run simple code
+      run: python -c 'import math; print(math.factorial(5))'
